@@ -1,0 +1,119 @@
+.footer {
+    background-color:  var(--container-color);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer__container {
+    padding: 2rem 0;
+}
+
+.footer__title,
+.footer__link {
+    color: var(--title-color);
+}
+
+.footer__title {
+    text-align: center;
+    margin-bottom: var(--mb-1);
+}
+
+.footer__link:hover {
+    color: var(--title-color-dark);
+}
+
+.footer__list {
+    display: flex;
+    justify-content: center;
+    column-gap: 1.5rem;
+    margin-bottom: var(--mb-1);
+}
+
+.footer__social {
+    display: flex;
+    justify-content: center;
+    column-gap: 1.25rem;
+}
+
+.footer__social-link {
+    background-color: var(--title-color);
+    color: var(--container-color);
+    font-size: 1.125rem;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    display: inline-flex;
+
+}
+.footer__social-link:hover {
+    background-color: var(--title-color-dark);
+}
+
+.footer__copy {
+    display: block;
+    margin-top: 2rem;
+    color: var(--title-color);
+    text-align: center;
+    font-size: var(--smaller-font-size);
+}
+
+
+@media screen and (max-width: 992px) {
+    .footer__social-link {
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+    }
+ }
+ 
+ @media screen and (max-width: 786px) {
+    .footer__container {
+        padding: 1rem 0; /* Reduce padding for smaller screens */
+    }
+
+    .footer__title {
+        font-size: var(--small-font-size); /* Adjust the font size if necessary */
+    }
+    .footer__item {
+        width: 50%; /* Each item takes half the width of the container */
+        text-align: center; /* Center-align the text within each item */
+        padding: 0.5rem; /* Add padding to create space around the text */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    .footer__list {
+        flex-direction: row; /* Align items horizontally */
+        flex-wrap: wrap; /* Wrap items to the next line if space runs out */
+        justify-content: center; /* Center items in the container */
+        align-items: center; /* Align items vertically */
+        max-width: 100%; /* Ensure the container uses full width */
+        margin: 0; /* Remove default margins if any */
+        padding: 0; /* Remove default padding if any */
+    }
+
+
+    .footer__link {
+        font-size: var(--smaller-font-size); /* Reduce font size for the links */
+        min-width: calc(33% - 10px); /* For 3 items per line */
+        /* min-width: calc(25% - 10px); For 4 items per line */
+        text-align: center; /* Center-align the text in each item */
+        padding: 0.5rem;
+    }
+
+    .footer__social {
+        margin-top: 1rem; /* Add some space between the list and social icons */
+    }
+
+    .footer__social-link {
+        font-size: 0.875rem; /* Reduce the size of social links */
+    }
+
+    .footer__copy {
+        margin-top: 1.5rem; /* Reduce the margin above the copyright text */
+        font-size: var(--smallest-font-size); /* Reduce the font size for smaller screens */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        display: none;
+    }
+}
