@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/portfolio-app-react/static/css/main.31899b82.css",
+    "main.js": "/portfolio-app-react/static/js/main.2ad67c87.js",
+    "static/js/787.69edda74.chunk.js": "/portfolio-app-react/static/js/787.69edda74.chunk.js",
+    "static/media/profile_new.JPG": "/portfolio-app-react/static/media/profile_new.168c3b44019d38e96c14.JPG",
+    "static/media/testimonial1.png": "/portfolio-app-react/static/media/testimonial1.725f7b06eb5892d48f88.png",
+    "static/media/about.jpg": "/portfolio-app-react/static/media/about.3f56f825c1b663cce68c.jpg",
+    "static/media/testimonial7.jpg": "/portfolio-app-react/static/media/testimonial7.144dd14eba8258e17f59.jpg",
+    "static/media/testimonial3.png": "/portfolio-app-react/static/media/testimonial3.94f9f9bab86c02068a8c.png",
+    "static/media/services3.jpg": "/portfolio-app-react/static/media/services3.9d23bc13f6fb90f30600.jpg",
+    "static/media/testimonial6.jpg": "/portfolio-app-react/static/media/testimonial6.9d23bc13f6fb90f30600.jpg",
+    "static/media/testimonial2.png": "/portfolio-app-react/static/media/testimonial2.3305940e160bf42ec3ec.png",
+    "static/media/testimonial5.png": "/portfolio-app-react/static/media/testimonial5.82ef3e53f91a9161a45c.png",
+    "static/media/services1.jpg": "/portfolio-app-react/static/media/services1.a2d2b6246f7875fe3cef.jpg",
+    "static/media/services2.jpg": "/portfolio-app-react/static/media/services2.178624d24a9263dc8405.jpg",
+    "static/media/services4.jpg": "/portfolio-app-react/static/media/services4.67c61a421b8519efb284.jpg",
+    "static/media/services6.jpg": "/portfolio-app-react/static/media/services6.55c5b6b6a57d585a8378.jpg",
+    "static/media/testimonial4.png": "/portfolio-app-react/static/media/testimonial4.2c99863dd751bb85232b.png",
+    "static/media/FarizResume.pdf": "/portfolio-app-react/static/media/FarizResume.c913cbbf3669a7bf7b70.pdf",
+    "index.html": "/portfolio-app-react/index.html",
+    "main.31899b82.css.map": "/portfolio-app-react/static/css/main.31899b82.css.map",
+    "main.2ad67c87.js.map": "/portfolio-app-react/static/js/main.2ad67c87.js.map",
+    "787.69edda74.chunk.js.map": "/portfolio-app-react/static/js/787.69edda74.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31899b82.css",
+    "static/js/main.2ad67c87.js"
+  ]
+}
