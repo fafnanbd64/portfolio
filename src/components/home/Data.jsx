@@ -9,20 +9,17 @@ const Data = () => {
             🚀
             
         </h1>
-        <h3 className="home__subtitle"> Software Developer</h3>
-        <p className="home__description"> 
-        A software developer/engineer living in Los Angeles, California.
-        <br/>
-        Born and brought up in the busiest city in South East Asia, Dhaka situated in the heart of Bangladesh. 
-        I went to school in Western Michigan University, in Kalamazoo Michigan, majoring in Computer Science. 
+        <h3 className="home__subtitle"> Analytics Engineer</h3>
+        <p className="home__description">
+        Analytics Engineer with 2+ years owning end-to-end data workflows — from event instrumentation and A/B testing at Guitar Center to building dbt pipelines on Snowflake. Passionate about building the data infrastructure that helps honest, consumer-first fintech products grow intelligently. Based in Los Angeles, CA.
         <br/>
         <br/>
-        
-        🎓 Graduated in August 2023. 
+
+        🎓 Graduated in August 2023.
         <br/>
         🏎️ Huge Formula1 Fanatic and soccer head- Go Liverpool!
         <br/>
-        💵  Would love a chat to build the next big unicorn over a coffee or a fifa match.  
+        💵  Would love a chat to build the next big unicorn over a coffee or a fifa match.
 
 
 

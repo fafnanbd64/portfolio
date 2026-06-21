@@ -24,10 +24,11 @@ const About = () => {
             <div className="about__data">
                 <Info/>
                 <p className="about__description">
-                    Graduated from the College of Engineering and Applied Sciences at 
-                    Western Michigan University majoring in Computer Science.
-                    I pursued Computer Science because I wanted to give my ideas shapes
-                    and see how they fit in the real world. 
+                    Analytics Engineer with 2+ years building end-to-end data workflows.
+                    At Guitar Center, I own the full analytics stack — event instrumentation,
+                    A/B testing, and dbt pipelines on Snowflake that power merchandising and
+                    marketing decisions. Passionate about the data infrastructure that helps
+                    consumer-first fintech products grow intelligently and equitably.
                 </p>
                 <br/> 
                 <a download="" href={CV} className="button button--flex">
