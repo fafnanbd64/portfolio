@@ -120,7 +120,9 @@ const Fotografia = ({ onBack }) => {
             await signIn(loginForm.email, loginForm.password);
             closeLogin();
         } catch (err) {
-            setLoginError('wrong email or password');
+            // eslint-disable-next-line no-console
+            console.error('[fotografia] sign-in failed:', err);
+            setLoginError(err.message || 'wrong email or password');
         } finally {
             setLoggingIn(false);
         }
