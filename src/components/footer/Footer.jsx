@@ -1,63 +1,39 @@
 import React from 'react';
 import "./footer.css";
-import ScrollUp from '../scrollup/ScrollUp';
+
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container container">
-        <h1 className="footer__title"> F.Kamal </h1>
-        <ul className="footer__list">
-          <li>
-            <a href="#home" 
-            className="footer__link">Home</a>
-          </li>
-          <li>
-            <a href="#about" 
-            className="footer__link">About</a>
-          </li>
-          <li>
-            <a href="#skills" 
-            className="footer__link">Skills</a>
-          </li>
-          <li>
-            <a href="#services" 
-            className="footer__link">Services</a>
-          </li>
-          <li>
-            <a href="#qualification" 
-            className="footer__link">Qualification</a>
-          </li>
+        <h1 className="footer__title">F<span>.</span>Kamal</h1>
 
-          <li>
-            <a href="#testimonials" 
-            className="footer__link">Testimonials</a>
-          </li>
-          <li>
-            <a href="#contact" 
-            className="footer__link">Contact</a>
-          </li>
-          
-          
+        <ul className="footer__list">
+          <li><a href="#home" className="footer__link">Home</a></li>
+          <li><a href="#about" className="footer__link">About</a></li>
+          <li><a href="#skills" className="footer__link">Skills</a></li>
+          <li><a href="#qualification" className="footer__link">Experience</a></li>
+          <li><a href="#services" className="footer__link">Companies</a></li>
+          <li><a href="#projects" className="footer__link">Projects</a></li>
+          <li><span className="footer__link" style={{cursor:'pointer'}} onClick={() => window.scrollTo(0,0)}>Life</span></li>
+          <li><a href="#contact" className="footer__link">Contact</a></li>
         </ul>
 
         <div className="footer__social">
-          <a href="https://www.instagram.com/fariz_afnan/" className="home__social-icon" target="_blank">
-                <i class="bx bxl-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/Fariz.Afnan" className="home__social-icon" target="_blank">
-                <i class="bx bxl-facebook"></i>
-            </a>
-            <a href="https://github.com/fafnanbd64" className="home__social-icon" target="_blank">
-                <i class="uil uil-twitter-alt"></i>
-        </a> 
+          <a href="https://www.instagram.com/fariz_afnan/" className="footer__social-icon" target="_blank" rel="noreferrer">
+            <i className="bx bxl-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/fariz-kamal-b7713572/" className="footer__social-icon" target="_blank" rel="noreferrer">
+            <i className="bx bxl-linkedin"></i>
+          </a>
+          <a href="https://github.com/fafnanbd64" className="footer__social-icon" target="_blank" rel="noreferrer">
+            <i className="bx bxl-github"></i>
+          </a>
         </div>
-        <span className='footer__copy'> &#169; F.Kamal. All rights reserved 
-        </span>
+
+        <span className="footer__copy">&#169; 2025 F.Kamal — built with React</span>
       </div>
-
-      
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

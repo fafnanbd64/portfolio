@@ -1,83 +1,76 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "./header.css";
 
 const Header = () => {
+    const [Toggle, showMenu] = useState(false);
 
-    
-    /* Tpggle menu*/
-   const[Toggle, showMenu] = useState(false);
-   /* Toggle menu */
-   
-   /* State to control the header width */
-   const [isScrolled, setIsScrolled] = useState(false);
+    return (
+        <header className='header'>
+            <nav className="nav">
+                <a href="#home" className="nav__logo">
+                    F<span>.</span>Kamal
+                </a>
 
-   useEffect(() => {
-       const handleScroll = () => {
-           // This value should be the vertical position where your second component starts.
-           const positionToChangeHeader = 100; // Adjust based on your layout
-           setIsScrolled(window.scrollY > positionToChangeHeader);
-       };
+                <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
+                    <ul className="nav__list grid">
+                        <li className="nav__item">
+                            <a href="#home" className="nav__link active-link">
+                                <i className="uil uil-estate nav__icon"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li className="nav__item">
+                            <a href="#about" className="nav__link">
+                                <i className="uil uil-user nav__icon"></i>
+                                About
+                            </a>
+                        </li>
+                        <li className="nav__item">
+                            <a href="#skills" className="nav__link">
+                                <i className="uil uil-brackets-curly nav__icon"></i>
+                                Skills
+                            </a>
+                        </li>
+                        <li className="nav__item">
+                            <a href="#qualification" className="nav__link">
+                                <i className="uil uil-briefcase-alt nav__icon"></i>
+                                Experience
+                            </a>
+                        </li>
+                        <li className="nav__item">
+                            <a href="#services" className="nav__link">
+                                <i className="uil uil-building nav__icon"></i>
+                                Companies
+                            </a>
+                        </li>
+                        <li className="nav__item">
+                            <a href="#projects" className="nav__link">
+                                <i className="uil uil-folder nav__icon"></i>
+                                Projects
+                            </a>
+                        </li>
+                        <li className="nav__item">
+                            <a href="#life" className="nav__link" onClick={() => showMenu(false)}>
+                                <i className="uil uil-camera nav__icon"></i>
+                                Life
+                            </a>
+                        </li>
+                        <li className="nav__item">
+                            <a href="#contact" className="nav__link">
+                                <i className="uil uil-message nav__icon"></i>
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                    <i className="uil uil-times nav__close" onClick={() => showMenu(!Toggle)}></i>
+                </div>
 
-       // Attach the event listener
-       window.addEventListener("scroll", handleScroll);
+                <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
+                    <i className="uil uil-apps"></i>
+                </div>
+            </nav>
+        </header>
+    );
+};
 
-       // Remove the event listener on cleanup
-       return () => window.removeEventListener("scroll", handleScroll);
-   }, []);
-
-   return (
-    <header className='header'>
-        <nav className="nav ">
-            <a href="logo" className="nav__logo">Fariz Kamal</a>
-            <div className={Toggle ? "nav__menu show-menu":
-            "nav__menu"}>
-                <ul className="nav__list grid">
-                    <li className="nav__item">
-                        <a href="#home" className="nav__link active-link">
-                            <i className="uil uil-estate nav__icon"></i> 0.Home
-                        </a>
-                    </li>
-                    <li className="nav__item">
-                        <a href="#about" className="nav__link">
-                            <i className="uil uil-user nav__icon"></i> 1.About
-                        </a>
-                    </li>
-                    <li className="nav__item">
-                        <a href="#skills" className="nav__link">
-                            <i className="uil uil-file-alt nav__icon"></i> 2.Skills
-                        </a>
-                    </li>
-                    <li className="nav__item">
-                        <a href="#services" className="nav__link">
-                            <i className="uil uil-briefcase-alt nav__icon"></i>3.Services
-                        </a>
-                    </li>
-                    <li className="nav__item">
-                        <a href="#qualification" className="nav__link">
-                            <i className="uil uil-scenery nav__icon"></i> 4.Qualification
-                        </a>
-                    </li>
-                    <li className="nav__item">
-                        <a href="#testimonials" className="nav__link">
-                            <i className="uil uil-scenery nav__icon"></i> 5.Testimonials 
-                        </a>
-                    </li>
-                    <li className="nav__item">
-                        <a href="#contact" className="nav__link">
-                            <i className="uil uil-message nav__icon"></i> 6.Contact
-                        </a>
-                    </li>
-                </ul>
-                <i class="uil uil-times nav__close" onClick={() => showMenu
-            (!Toggle)}></i>
-            </div>
-            <div className="nav__toggle" onClick={() => showMenu
-            (!Toggle)}>
-                <i class="uil uil-apps"></i>
-            </div>
-        </nav>
-    </header>
-  )
-}
-
-export default Header
+export default Header;

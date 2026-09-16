@@ -1,5 +1,46 @@
-.f1-car-emoji {
-    padding-left: 25px;
-    font-size: 32px; /* or any other size */
-  }
-  
+.home__greeting {
+    font-size: var(--small-font-size);
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-transform: lowercase;
+}
+
+.home__buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.button--ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-2);
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid var(--border-2);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    letter-spacing: 0.04em;
+    font-family: var(--body-font);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.button--ghost:hover {
+    color: var(--text);
+    border-color: var(--text-2);
+}
+
+.button__icon-uil {
+    font-size: 1.1rem;
+    margin-left: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .home__buttons {
+        justify-content: flex-start;
+    }
+}

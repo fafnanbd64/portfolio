@@ -1,0 +1,529 @@
+/* ===========================
+   FOTOGRAFIA — full page
+   =========================== */
+
+.foto {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header bar ── */
+.foto__header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-fixed);
+    background: rgba(13, 13, 13, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.foto__back {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-2);
+    font-family: var(--body-font);
+    font-size: var(--small-font-size);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+.foto__back:hover { color: var(--accent); }
+.foto__back i { font-size: 1.05rem; }
+
+.foto__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.15;
+}
+.foto__brand-logo {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-semi-bold);
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+.foto__brand-logo span { color: var(--accent); }
+.foto__brand-sub {
+    font-size: 0.52rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.foto__upload-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--body-font);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    padding: 0.42rem 0.95rem;
+    border-radius: 0.25rem;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.foto__upload-btn:hover {
+    background: var(--accent);
+    color: #0d0d0d;
+}
+.foto__upload-btn i { font-size: 1rem; }
+
+.foto__owner-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.foto__signin-btn,
+.foto__signout-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-3);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+.foto__signin-btn:hover,
+.foto__signout-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+.foto__signin-btn i,
+.foto__signout-btn i { font-size: 0.95rem; }
+
+/* ── Error message ── */
+.foto__error {
+    font-size: var(--small-font-size);
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* ── Body ── */
+.foto__body {
+    flex: 1;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+}
+
+.foto__intro {
+    margin-bottom: 2.5rem;
+}
+.foto__title {
+    font-size: var(--h1-font-size);
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+.foto__subtitle {
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* ── Empty state ── */
+.foto__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 7rem 0;
+    color: var(--text-3);
+    text-align: center;
+}
+.foto__empty i { font-size: 2.75rem; }
+.foto__empty p {
+    font-size: var(--small-font-size);
+    letter-spacing: 0.03em;
+    color: var(--text-2);
+}
+
+/* ── Grid ── */
+.foto__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+/* ── Card ── */
+.foto__card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+}
+
+.foto__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+.foto__card:hover .foto__img { transform: scale(1.05); }
+
+.foto__card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.25s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.65rem;
+}
+.foto__card:hover .foto__card-overlay { opacity: 1; }
+
+.foto__delete {
+    align-self: flex-end;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.55);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+}
+.foto__delete:hover {
+    background: rgba(220, 53, 53, 0.8);
+    color: #fff;
+    border-color: transparent;
+}
+.foto__delete i { font-size: 0.78rem; }
+
+.foto__card-meta { width: 100%; }
+
+.foto__card-title {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+    color: #fff;
+    margin-bottom: 0.28rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.foto__card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.14rem;
+}
+.foto__card-details span {
+    font-size: var(--tiny-font-size);
+    color: rgba(255, 255, 255, 0.68);
+    display: flex;
+    align-items: center;
+    gap: 0.28rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.foto__card-details i {
+    color: var(--accent);
+    font-size: 0.78rem;
+    flex-shrink: 0;
+}
+
+/* ── Modal backdrop ── */
+.foto__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* ── Modal ── */
+.foto__modal {
+    background: var(--bg-3);
+    border: 1px solid var(--border-2);
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 460px;
+    padding: 1.5rem;
+}
+
+.foto__modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+.foto__modal-head h2 {
+    font-size: var(--normal-font-size);
+    color: var(--text);
+    font-weight: var(--font-semi-bold);
+    letter-spacing: -0.01em;
+}
+.foto__modal-head > button {
+    background: none;
+    color: var(--text-2);
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+    border: none;
+    padding: 0;
+}
+.foto__modal-head > button:hover { color: var(--text); }
+
+/* ── Drop zone ── */
+.foto__dropzone {
+    border: 1px dashed var(--border-2);
+    border-radius: 0.375rem;
+    padding: 2.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    margin-bottom: 1rem;
+    min-height: 152px;
+    justify-content: center;
+    overflow: hidden;
+}
+.foto__dropzone i {
+    font-size: 1.9rem;
+    color: var(--text-3);
+    transition: color 0.2s;
+}
+.foto__dropzone p {
+    font-size: var(--small-font-size);
+    color: var(--text-2);
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+.foto__dropzone span {
+    font-size: var(--tiny-font-size);
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.foto__dropzone:hover,
+.foto__dropzone--over {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+}
+.foto__dropzone:hover i,
+.foto__dropzone--over i { color: var(--accent); }
+
+.foto__dropzone--filled {
+    padding: 0;
+    border-style: solid;
+    border-color: var(--accent);
+    min-height: 200px;
+}
+.foto__dz-preview {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── Form fields ── */
+.foto__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+}
+.foto__fields input {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.62rem 0.85rem;
+    border-radius: 0.25rem;
+    font-family: var(--body-font);
+    font-size: var(--small-font-size);
+    width: 100%;
+    transition: border-color 0.2s;
+    letter-spacing: 0.02em;
+    outline: none;
+}
+.foto__fields input::placeholder { color: var(--text-3); }
+.foto__fields input:focus { border-color: var(--accent); }
+.foto__fields input[type="date"] { color-scheme: dark; }
+
+/* ── Modal actions ── */
+.foto__modal-actions {
+    display: flex;
+    gap: 0.7rem;
+    justify-content: flex-end;
+}
+
+.foto__btn-cancel {
+    background: none;
+    border: 1px solid var(--border-2);
+    color: var(--text-2);
+    font-family: var(--body-font);
+    font-size: var(--small-font-size);
+    padding: 0.52rem 1.1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, color 0.2s;
+}
+.foto__btn-cancel:hover {
+    border-color: var(--text-2);
+    color: var(--text);
+}
+
+.foto__btn-save {
+    background: var(--accent);
+    color: #0d0d0d;
+    font-family: var(--body-font);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+    padding: 0.52rem 1.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    border: none;
+    transition: background 0.2s;
+}
+.foto__btn-save:hover:not(:disabled) { background: #1fffc0; }
+.foto__btn-save:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+}
+
+/* ── Lightbox ── */
+.foto__lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: calc(var(--z-modal) + 10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.foto__lb-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.2s, color 0.2s;
+}
+.foto__lb-close:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+}
+
+.foto__lb-img {
+    max-width: min(90vw, 900px);
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 0.375rem;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+}
+
+.foto__lb-info {
+    text-align: center;
+}
+.foto__lb-info h3 {
+    font-size: var(--normal-font-size);
+    color: #fff;
+    font-weight: var(--font-semi-bold);
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
+}
+.foto__lb-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+.foto__lb-meta span {
+    font-size: var(--small-font-size);
+    color: rgba(255, 255, 255, 0.55);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    letter-spacing: 0.03em;
+}
+.foto__lb-meta i {
+    color: var(--accent);
+    font-size: 0.85rem;
+}
+
+/* ===== BREAKPOINTS ===== */
+@media screen and (max-width: 768px) {
+    .foto__header { padding: 0 1rem; }
+    .foto__body { padding: 2rem 1rem 4rem; }
+    .foto__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .foto__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+    }
+    .foto__card-title { font-size: var(--smaller-font-size); }
+}

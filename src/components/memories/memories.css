@@ -1,0 +1,133 @@
+.memories {
+    padding-bottom: 4rem;
+}
+
+.memories__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 1.25rem;
+}
+
+.memory__cell {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.memory__cell:hover,
+.memory__cell--active {
+    border-color: var(--accent);
+    transform: scale(1.01);
+    z-index: 1;
+}
+
+/* Icon shown on gradient placeholder cells */
+.memory__placeholder-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    opacity: 0.25;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Dark overlay — hidden by default, revealed on hover / tap */
+.memory__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 55%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.memory__cell:hover .memory__overlay,
+.memory__cell--active .memory__overlay {
+    opacity: 1;
+}
+
+.memory__meta {
+    width: 100%;
+}
+
+.memory__emoji {
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.memory__title {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+    color: #ffffff;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+}
+
+.memory__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.memory__location,
+.memory__date {
+    font-size: var(--tiny-font-size);
+    color: rgba(255, 255, 255, 0.72);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    letter-spacing: 0.03em;
+}
+
+.memory__location i,
+.memory__date i {
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+/* Hint text */
+.memories__hint {
+    text-align: center;
+    font-size: var(--tiny-font-size);
+    color: var(--text-3);
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.memories__hint i {
+    font-size: 1rem;
+    color: var(--text-3);
+}
+
+/* ===== BREAKPOINTS ===== */
+@media screen and (max-width: 768px) {
+    .memories__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .memories__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+    }
+    .memory__title {
+        font-size: var(--smaller-font-size);
+    }
+}
