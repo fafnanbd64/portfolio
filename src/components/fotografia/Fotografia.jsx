@@ -38,7 +38,9 @@ const Fotografia = ({ onBack }) => {
             setPhotos(data.map(p => ({ ...p, url: p.image_url })));
             setLoadError(null);
         } catch (err) {
-            setLoadError('could not load photos — check your connection and try again');
+            // eslint-disable-next-line no-console
+            console.error('[fotografia] load failed:', err);
+            setLoadError(`could not load photos — ${err.message || 'check your connection and try again'}`);
         }
     }, []);
 

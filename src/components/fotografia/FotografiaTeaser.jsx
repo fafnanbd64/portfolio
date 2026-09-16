@@ -8,7 +8,11 @@ const FotografiaTeaser = ({ onOpen }) => {
     useEffect(() => {
         getPhotos()
             .then(data => setPhotos(data.slice(0, 6).map(p => ({ ...p, url: p.image_url }))))
-            .catch(() => setPhotos([]));
+            .catch((err) => {
+                // eslint-disable-next-line no-console
+                console.error('[fotografia] teaser load failed:', err);
+                setPhotos([]);
+            });
     }, []);
 
     const cells = Array.from({ length: 6 });
