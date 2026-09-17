@@ -20,8 +20,23 @@ const Fotografia = ({ onBack }) => {
     const [preview, setPreview] = useState(null);
     const [dragOver, setDragOver] = useState(false);
     const [saving, setSaving] = useState(false);
-    const [lightbox, setLightbox] = useState(null);
+    const [lightboxId, setLightboxId] = useState(null);
     const fileRef = useRef();
+    const touchStartX = useRef(null);
+
+    const lightboxIndex = photos.findIndex(p => p.id === lightboxId);
+    const lightbox = lightboxIndex >= 0 ? photos[lightboxIndex] : null;
+
+    const goToDelta = useCallback((delta) => {
+        setLightboxId(current => {
+            const i = photos.findIndex(p => p.id === current);
+            if (i < 0 || photos.length === 0) return current;
+            const next = (i + delta + photos.length) % photos.length;
+            return photos[next].id;
+        });
+    }, [photos]);
+    const goPrev = useCallback(() => goToDelta(-1), [goToDelta]);
+    const goNext = useCallback(() => goToDelta(1), [goToDelta]);
 
     const [session, setSession] = useState(undefined); // undefined = still checking
     const [showLogin, setShowLogin] = useState(false);
@@ -98,7 +113,7 @@ const Fotografia = ({ onBack }) => {
         const photo = photos.find(p => p.id === id);
         try {
             await deletePhoto(id, photo?.image_path);
-            if (lightbox?.id === id) setLightbox(null);
+            if (lightboxId === id) setLightboxId(null);
             await loadPhotos();
         } catch (err) {
             // eslint-disable-next-line no-alert
@@ -130,6 +145,29 @@ const Fotografia = ({ onBack }) => {
 
     const handleLogout = async () => {
         await signOut();
+    };
+
+    useEffect(() => {
+        if (!lightbox) return undefined;
+        const onKeyDown = (e) => {
+            if (e.key === 'ArrowLeft') goPrev();
+            else if (e.key === 'ArrowRight') goNext();
+            else if (e.key === 'Escape') setLightboxId(null);
+        };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [lightbox, goPrev, goNext]);
+
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+    const handleTouchEnd = (e) => {
+        if (touchStartX.current === null) return;
+        const delta = e.changedTouches[0].clientX - touchStartX.current;
+        touchStartX.current = null;
+        const SWIPE_THRESHOLD = 50;
+        if (delta > SWIPE_THRESHOLD) goPrev();
+        else if (delta < -SWIPE_THRESHOLD) goNext();
     };
 
     return (
@@ -189,7 +227,7 @@ const Fotografia = ({ onBack }) => {
                             <div
                                 key={photo.id}
                                 className="foto__card"
-                                onClick={() => setLightbox(photo)}
+                                onClick={() => setLightboxId(photo.id)}
                             >
                                 <img src={photo.url} alt={photo.title} className="foto__img" />
                                 <div className="foto__card-overlay">
@@ -362,11 +400,33 @@ const Fotografia = ({ onBack }) => {
             {lightbox && (
                 <div
                     className="foto__lightbox"
-                    onClick={(e) => e.target === e.currentTarget && setLightbox(null)}
+                    onClick={(e) => e.target === e.currentTarget && setLightboxId(null)}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
                 >
-                    <button className="foto__lb-close" onClick={() => setLightbox(null)}>
+                    <button className="foto__lb-close" onClick={() => setLightboxId(null)}>
                         <i className="uil uil-times"></i>
                     </button>
+
+                    {photos.length > 1 && (
+                        <>
+                            <button
+                                className="foto__lb-nav foto__lb-nav--prev"
+                                onClick={(e) => { e.stopPropagation(); goPrev(); }}
+                                title="previous photo"
+                            >
+                                <i className="uil uil-angle-left-b"></i>
+                            </button>
+                            <button
+                                className="foto__lb-nav foto__lb-nav--next"
+                                onClick={(e) => { e.stopPropagation(); goNext(); }}
+                                title="next photo"
+                            >
+                                <i className="uil uil-angle-right-b"></i>
+                            </button>
+                        </>
+                    )}
+
                     <img src={lightbox.url} alt={lightbox.title} className="foto__lb-img" />
                     <div className="foto__lb-info">
                         <h3>{lightbox.title}</h3>
@@ -381,6 +441,11 @@ const Fotografia = ({ onBack }) => {
                                 <span>
                                     <i className="uil uil-calendar-alt"></i>
                                     {formatDate(lightbox.date)}
+                                </span>
+                            )}
+                            {photos.length > 1 && (
+                                <span className="foto__lb-count">
+                                    {lightboxIndex + 1} / {photos.length}
                                 </span>
                             )}
                         </div>

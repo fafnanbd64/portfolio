@@ -9,7 +9,7 @@ const Misc = () => {
                 <div className="skills__group">
 
                     <div className="skills__data">
-                    <i class='bx bxs-badge-check'></i>
+                    <i className='bx bxs-badge-check'></i>
                         <div>
                             <h3 className="skills__name">Claude Code</h3>
                             <span className="skills__level">Advanced</span>
@@ -17,7 +17,7 @@ const Misc = () => {
                     </div>
 
                     <div className="skills__data">
-                    <i class='bx bxs-badge-check'></i>
+                    <i className='bx bxs-badge-check'></i>
                         <div>
                             <h3 className="skills__name">Quantum Metric</h3>
                             <span className="skills__level">Advanced</span>
@@ -25,7 +25,7 @@ const Misc = () => {
                     </div>
 
                     <div className="skills__data">
-                    <i class='bx bxs-badge-check'></i>
+                    <i className='bx bxs-badge-check'></i>
                         <div>
                             <h3 className="skills__name">Adobe Analytics</h3>
                             <span className="skills__level">Advanced</span>
@@ -33,7 +33,7 @@ const Misc = () => {
                     </div>
 
                     <div className="skills__data">
-                    <i class='bx bxs-badge-check'></i>
+                    <i className='bx bxs-badge-check'></i>
                         <div>
                             <h3 className="skills__name">Monetate</h3>
                             <span className="skills__level">Intermediate</span>
@@ -47,7 +47,7 @@ const Misc = () => {
                 <div className="skills__group">
 
                     <div className="skills__data">
-                    <i class='bx bxs-badge-check'></i>
+                    <i className='bx bxs-badge-check'></i>
                         <div>
                             <h3 className="skills__name">Git & Github</h3>
                             <span className="skills__level">Intermediate</span>
@@ -55,7 +55,7 @@ const Misc = () => {
                     </div>
 
                     <div className="skills__data">
-                    <i class='bx bxs-badge-check'></i>
+                    <i className='bx bxs-badge-check'></i>
                         <div>
                             <h3 className="skills__name">Cloud Security</h3>
                             <span className="skills__level">Intermediate</span>
@@ -63,7 +63,7 @@ const Misc = () => {
                     </div>
 
                     <div className="skills__data">
-                    <i class='bx bxs-badge-check'></i>
+                    <i className='bx bxs-badge-check'></i>
                         <div>
                             <h3 className="skills__name">API Development</h3>
                             <span className="skills__level">Intermediate</span>
@@ -71,7 +71,7 @@ const Misc = () => {
                     </div>
 
                     <div className="skills__data">
-                    <i class='bx bxs-badge-check'></i>
+                    <i className='bx bxs-badge-check'></i>
                         <div>
                             <h3 className="skills__name">Communica-tion Skills</h3>
                             <span className="skills__level">Intermediate</span>

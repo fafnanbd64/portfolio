@@ -10,7 +10,7 @@ const About = () => {
         <div className="div1">
             <h2 className="section__title"> A Little About Myself 
             <br/> 
-            <span class="happy-emoji">&#x1F603;</span>
+            <span className="happy-emoji">&#x1F603;</span>
             </h2>
 
             <span className="section__subtitle">
@@ -34,7 +34,7 @@ const About = () => {
                 <a download="" href={CV} className="button button--flex">
                     Download Resume
                     <svg
-                    class="button__icon"
+                    className="button__icon"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
